@@ -1,24 +1,57 @@
 class AdminsBackoffice::AdminsController < AdminsBackofficeController
+  before_action :verify_password, only: [:update]
+  before_action :set_admin, only: [:edit, :update, :destroy]
+
   def index
     @admins = Admin.all
   end
 
+  def new
+    @admin = Admin.new
+  end
+
+  def create
+    @admin = Admin.new(params_admin)
+    if @admin.save
+      redirect_to admins_backoffice_admins_path(@admin), notice: "Administrador cadastrado com sucesso!!!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
-      @admin = Admin.find(params[:id])
   end
 
   def update
-    #metodo extract salvando sem alterar a senha
-    # if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
-    #   params[:admin].extract!(:password, :password_confirmation)
-    # end
-    @admin = Admin.find(params[:id])
-    params_admin = params.require(:admin).permit(:email, :password, :password_confirmation )
-
     if @admin.update(params_admin)
-      redirect_to admins_backoffice_admins_path, notice: "Atualizado com sucesso!!!"
+      redirect_to admins_backoffice_admins_path(@admin), notice: "Administrador atualizado com sucesso!!!"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @admin.destroy
+      redirect_to admins_backoffice_admins_path, notice: "Administrador excluido com sucesso!!!"
+    else
+      render :index, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def params_admin
+    params.require(:admin).permit(:email, :password, :password_confirmation )
+  end
+
+  def set_admin
+    @admin = Admin.find(params[:id])
+  end
+
+  def verify_password
+    #metodo extract salvando sem alterar a senha
+    if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
+      params[:admin].extract!(:password, :password_confirmation)
     end
   end
 end

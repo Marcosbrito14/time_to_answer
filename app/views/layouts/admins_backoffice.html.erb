@@ -22,9 +22,6 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
-    <%= javascript_importmap_tags %>
-    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%#= javascript_include_tag "admins_backoffice" %>
 
 
     <!-- Custom fonts for this template-->
@@ -36,7 +33,6 @@
 
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -63,7 +59,7 @@
 
             <li class="nav-item">
                 <%= link_to admins_backoffice_admins_path, class:"nav-link" do %>
-                  <i class="fas fa-fw fa-tachometer-alt"></i>
+                  <i class="fa fa-users fa-tachometer-alt"></i>
                   <span>Administradores</span>
                 <% end %>
             </li>
@@ -75,7 +71,8 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    <%= action_name %>
+                    <%#= @admin %>
                     <!-- Page Heading -->
                     <%= yield %>
                 </div>
@@ -88,7 +85,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>
@@ -117,6 +114,22 @@
             </div>
         </div>
     </div>
+
+    <%#= javascript_importmap_tags %>
+    <%= javascript_include_tag "turbo", type: "module" %>
+    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%#= javascript_include_tag "admins_backoffice" %>
+
+    <% if notice %>
+      <script>
+          $.bootstrapGrowl("<%= notice %>", {
+            type: 'success', // (null, 'info', 'danger', 'success')
+            align: 'right', // ('left', 'right', or 'center')
+            allow_dismiss: true, // If true then will display a cross to close the popup.
+            stackup_spacing: 10 // spacing between consecutively stacked growls.
+          });
+      </script>
+    <% end %>
 
 </body>
 

@@ -1,5 +1,5 @@
 pt-BR:
-  active_record:
+  activerecord:
     models:
       admin:
         one: Administrador

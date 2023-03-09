@@ -11,7 +11,11 @@
       <tr>
         <th>#</th>
         <th>Email</th>
-        <th></th>
+        <th>
+          <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle btn-sm" do %>
+            <i class="fa fa-plus"></i>
+          <% end %>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -29,9 +33,12 @@
                 <i class="fa fa-edit"></i>
               </button>-->
 
-              <button type="button" class="btn btn-danger btn-circle btn-sm">
+              <%= link_to admins_backoffice_admin_path(admin), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class:"btn btn-danger btn-circle btn-sm" do %>
                 <i class="fa fa-minus"></i>
-              </button>
+              <% end %>
+            <!--<button type="button" class="btn btn-danger btn-circle btn-sm">
+                <i class="fa fa-minus"></i>
+              </button>-->
             </div>
           </td>
         </tr>
