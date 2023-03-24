@@ -49,6 +49,8 @@ gem 'devise'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'tty-spinner'
 gem 'faker'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 # Use Sass to process CSS
 gem "sassc-rails"

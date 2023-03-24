@@ -3,7 +3,7 @@
     <h1 class="page-header">Listando Administradores</h1>
   </div>
 </div>
-
+<br>
 <%#= @admins.inspect %>
 <div class="table-responsivo">
   <table class="table table-striped table-bordered table-hover">
@@ -45,4 +45,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="container">
+    <%= paginate @admins %>
+  </div>
 </div>
