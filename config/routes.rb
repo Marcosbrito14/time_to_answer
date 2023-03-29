@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   namespace :admins_backoffice do
     get 'welcome/index'#Dashboard
-    resources :admins#Administradores
+    resources :admins  #Administradores
+    resources :subjects#Assuntos/Areas
     #get 'admins/index'
     #get 'admins/edit/:id, to: 'admins#edit'
   end
