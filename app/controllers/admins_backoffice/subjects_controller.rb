@@ -40,7 +40,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   private
 
   def params_subject
-    params.require(:subject).permit(:description )
+    params.require(:subject).permit(:description, :subject_id)
   end
 
   def set_subject

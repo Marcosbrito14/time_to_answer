@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'welcome/index'#Dashboard
     resources :admins  #Administradores
     resources :subjects#Assuntos/Areas
+    resources :questions#Questões
     #get 'admins/index'
     #get 'admins/edit/:id, to: 'admins#edit'
   end
